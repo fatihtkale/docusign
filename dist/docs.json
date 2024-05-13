@@ -1,0 +1,156 @@
+{
+  "api": {
+    "name": "DocumentScannerPlugin",
+    "slug": "documentscannerplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "scanDocument",
+        "signature": "(options?: ScanDocumentOptions | undefined) => Promise<ScanDocumentResponse>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "ScanDocumentOptions | undefined"
+          }
+        ],
+        "returns": "Promise<ScanDocumentResponse>",
+        "tags": [],
+        "docs": "Opens the camera, and starts the document scan",
+        "complexTypes": [
+          "ScanDocumentResponse",
+          "ScanDocumentOptions"
+        ],
+        "slug": "scandocument"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "ScanDocumentResponse",
+      "slug": "scandocumentresponse",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "scannedImages",
+          "tags": [],
+          "docs": "This is an array with either file paths or base64 images for the\r\ndocument scan.",
+          "complexTypes": [],
+          "type": "string[] | undefined"
+        },
+        {
+          "name": "status",
+          "tags": [],
+          "docs": "The status lets you know if the document scan completes successfully,\r\nor if the user cancels before completing the document scan.",
+          "complexTypes": [
+            "ScanDocumentResponseStatus"
+          ],
+          "type": "ScanDocumentResponseStatus"
+        }
+      ]
+    },
+    {
+      "name": "ScanDocumentOptions",
+      "slug": "scandocumentoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "croppedImageQuality",
+          "tags": [
+            {
+              "text": ": 100",
+              "name": "default"
+            }
+          ],
+          "docs": "Android only: The quality of the cropped image from 0 - 100. 100 is the best quality.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "letUserAdjustCrop",
+          "tags": [
+            {
+              "text": ": true",
+              "name": "default"
+            }
+          ],
+          "docs": "Android only: If true then once the user takes a photo, they get to preview the automatically\r\ndetected document corners. They can then move the corners in case there needs to\r\nbe an adjustment. If false then the user can't adjust the corners, and the user\r\ncan only take 1 photo (maxNumDocuments can't be more than 1 in this case).",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "maxNumDocuments",
+          "tags": [
+            {
+              "text": ": 24",
+              "name": "default"
+            }
+          ],
+          "docs": "Android only: The maximum number of photos an user can take (not counting photo retakes)",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "responseType",
+          "tags": [
+            {
+              "text": ": ResponseType.ImageFilePath",
+              "name": "default"
+            }
+          ],
+          "docs": "The response comes back in this format on success. It can be the document\r\nscan image file paths or base64 images.",
+          "complexTypes": [
+            "ResponseType"
+          ],
+          "type": "ResponseType"
+        }
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "ScanDocumentResponseStatus",
+      "slug": "scandocumentresponsestatus",
+      "members": [
+        {
+          "name": "Success",
+          "value": "'success'",
+          "tags": [],
+          "docs": "The status comes back as success if the document scan completes\r\nsuccessfully."
+        },
+        {
+          "name": "Cancel",
+          "value": "'cancel'",
+          "tags": [],
+          "docs": "The status comes back as cancel if the user closes out of the camera\r\nbefore completing the document scan."
+        }
+      ]
+    },
+    {
+      "name": "ResponseType",
+      "slug": "responsetype",
+      "members": [
+        {
+          "name": "Base64",
+          "value": "'base64'",
+          "tags": [],
+          "docs": "Use this response type if you want document scan returned as base64 images."
+        },
+        {
+          "name": "ImageFilePath",
+          "value": "'imageFilePath'",
+          "tags": [],
+          "docs": "Use this response type if you want document scan returned as inmage file paths."
+        }
+      ]
+    }
+  ],
+  "typeAliases": [],
+  "pluginConfigs": []
+}
